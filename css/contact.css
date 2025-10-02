@@ -1,0 +1,590 @@
+.contact {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, #f0f2f5, #e8eaed);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* Contact Grid Layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* Contact Cards */
+.contact-cards {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.contact-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    border: 1px solid #e1e4e8;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-icon i {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.store-hours {
+    margin: 1.5rem 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.store-hours h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.direction-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #007bff;
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+
+.direction-btn:hover {
+    background: #0056b3;
+}
+
+/* Contact Methods */
+.contact-methods {
+    display: grid;
+    gap: 1rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    background: #f8f9fa;
+    transition: background 0.3s ease;
+}
+
+.contact-method:hover {
+    background: #e9ecef;
+}
+
+.contact-method i {
+    font-size: 1.2rem;
+}
+
+.contact-method.whatsapp {
+    color: #25D366;
+}
+
+/* Member Services Form */
+.member-services-form {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e1e4e8;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.language-selector {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.language-selector {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang-btn:hover {
+    background: #f8f9fa;
+    border-color: #0056b3;
+}
+
+.lang-btn.active {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.lang-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+/* Language specific styles */
+[data-lang="hi"], [data-lang="mr"] {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input.error, select.error, textarea.error {
+    border-color: #dc3545;
+    background-color: #fff8f8;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Add fonts for different languages */
+[lang="hi"] {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+[lang="mr"] {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+/* Map Section */
+.map-section {
+    margin: 4rem 0;
+}
+
+.google-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* FAQ Section */
+.faq-section {
+    margin: 4rem 0;
+}
+
+.faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.2rem;
+    text-align: left;
+    background: #fff;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+}
+
+.faq-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.faq-item.active .faq-answer {
+    padding: 1.2rem;
+    max-height: 500px;
+}
+
+.faq-item.active .icon {
+    transform: rotate(45deg);
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: linear-gradient(135deg, #007bff, #00a6ff);
+    padding: 3rem;
+    border-radius: 12px;
+    color: #fff;
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.newsletter-form {
+    max-width: 500px;
+    margin: 2rem auto 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+}
+
+.newsletter-form button {
+    padding: 1rem 2rem;
+    background: #fff;
+    color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-2px);
+}
+
+/* Portal Access */
+.portal-access {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.portal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.portal-btn {
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.portal-btn.login {
+    background: #007bff;
+    color: #fff;
+}
+
+.portal-btn.register {
+    background: #fff;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.portal-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Downloads Section */
+.downloads-section {
+    margin: 4rem 0;
+}
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.download-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.download-item:hover {
+    transform: translateY(-5px);
+}
+
+.download-item i {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+/* Responsive Design */
+/* Large Desktops (1200px and up) */
+@media (min-width: 1200px) {
+    .contact-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .contact-grid {
+        gap: 2.5rem;
+    }
+}
+
+/* Desktop and Laptop (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .contact-container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+/* Tablets and Small Laptops (768px to 991px) */
+@media (max-width: 991px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .portal-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .portal-btn {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .download-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Devices (up to 767px) */
+@media (max-width: 767px) {
+    .contact {
+        padding: 3rem 1rem;
+    }
+
+    .contact-card {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .language-selector {
+        flex-wrap: wrap;
+    }
+
+    .lang-btn {
+        flex: 1;
+        min-width: 100px;
+    }
+
+    .newsletter-section {
+        padding: 2rem 1rem;
+    }
+
+    .faq-question {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .contact-methods {
+        flex-direction: column;
+    }
+
+    .contact-method {
+        width: 100%;
+    }
+
+    .store-hours {
+        margin: 1rem 0;
+    }
+
+    .download-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-widget {
+        padding: 1rem;
+    }
+}
+
+/* Small Mobile Devices (up to 575px) */
+@media (max-width: 575px) {
+    .contact-card {
+        margin: 0 -1rem;
+        border-radius: 0;
+    }
+
+    .member-services-form {
+        margin: 0 -1rem;
+        border-radius: 0;
+        padding: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    input, select, textarea {
+        padding: 0.7rem;
+    }
+
+    .submit-btn {
+        padding: 0.8rem;
+    }
+
+    .map-section {
+        margin: 2rem -1rem;
+    }
+
+    .google-map {
+        border-radius: 0;
+    }
+
+    .faq-section {
+        margin: 2rem -1rem;
+    }
+
+    .faq-item {
+        border-radius: 0;
+    }
+}
+
+/* Height-based Media Queries */
+@media (max-height: 700px) {
+    .contact {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 0.8rem;
+    }
+
+    textarea {
+        rows: 3;
+    }
+}
+
+/* Accessibility Features */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .contact-card,
+    .member-services-form,
+    .faq-item {
+        border: 2px solid #000;
+    }
+}
