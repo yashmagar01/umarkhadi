@@ -569,7 +569,8 @@ input.error, select.error, textarea.error {
     }
 
     textarea {
-        rows: 3;
+        height: 60px;
+        min-height: 60px;
     }
 }
 
