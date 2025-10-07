@@ -2,17 +2,17 @@
 
 // Global state management
 const languageState = {
-    current: 'en',
-    set: function(lang) {
-        this.current = lang;
-        const form = document.querySelector('.member-services-form');
-        if (form) {
-            form.setAttribute('lang', lang);
-        }
-    },
-    get: function() {
-        return this.current;
+  current: 'en',
+  set: function(lang) {
+    this.current = lang;
+    const form = document.querySelector('.member-services-form');
+    if (form) {
+      form.setAttribute('lang', lang);
     }
+  },
+  get: function() {
+    return this.current;
+  }
 };
 
 // Define translations
@@ -293,9 +293,19 @@ document.addEventListener('DOMContentLoaded', () => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 if (validateForm()) {
-                    // Here you would typically send the form data to your server
-                    console.log('Form is valid, ready to submit');
+                    // Simulate form submission
+                    const submitBtn = form.querySelector('.submit-btn');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Submitting...';
+                    submitBtn.disabled = true;
+
+                    setTimeout(() => {
+                        alert('Thank you! Your request has been submitted successfully.');
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
                     form.reset();
+                        updateLanguage(languageState.get()); // Reset select to default text
+                    }, 1000);
                 }
             });
         }

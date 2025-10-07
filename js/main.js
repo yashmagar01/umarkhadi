@@ -6,14 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenu && navLinks) {
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenu.setAttribute('aria-expanded', isExpanded);
         });
     }
-});
 
-// Statistics Counter Animation
-const stats = document.querySelectorAll('.stat-number');
+    // --- Statistics Counter Animation ---
+    const stats = document.querySelectorAll('.stat-number');
 
-function animateValue(element, start, end, duration) {
+    function animateValue(element, start, end, duration) {
     const range = end - start;
     const increment = range / (duration / 16);
     let current = start;
@@ -32,13 +33,12 @@ function animateValue(element, start, end, duration) {
         }
     }, 16);
 }
+    
+    const observerOptions = {
+        threshold: 0.5
+    };
 
-// Intersection Observer for Statistics
-const observerOptions = {
-    threshold: 0.5
-};
-
-const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const target = parseInt(entry.target.getAttribute('data-target'));
@@ -46,12 +46,12 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+    }, observerOptions);
 
-stats.forEach(stat => observer.observe(stat));
+    stats.forEach(stat => observer.observe(stat));
 
-// Scroll Reveal Animations
-ScrollReveal().reveal('.hero-content', {
+    // --- Scroll Reveal Animations ---
+    ScrollReveal().reveal('.hero-content', {
     delay: 200,
     distance: '50px',
     origin: 'bottom'
@@ -78,10 +78,10 @@ ScrollReveal().reveal('.service-card', {
     origin: 'bottom'
 });
 
-// Form Submission
-const contactForm = document.querySelector('.contact-form');
+    // --- Form Submission (Placeholder) ---
+    const contactForm = document.querySelector('.contact-form'); // Note: This is a generic class, might conflict.
 
-if (contactForm) {
+    if (contactForm && !contactForm.id) { // Only attach to non-specific contact forms
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         // Add form submission logic here
@@ -89,9 +89,9 @@ if (contactForm) {
         contactForm.reset();
     });
 }
-
-// Leadership Section Interactions
-const leaderBios = {
+    
+    // --- Leadership Section Interactions ---
+    const leaderBios = {
     chairman: {
         name: 'Dr. Krishnaji Da. Patil',
         role: 'Chairman',
@@ -144,12 +144,11 @@ const leaderBios = {
     }
 };
 
-// Modal Functionality
-const modal = document.querySelector('.modal-container');
-const closeModal = document.querySelector('.close-modal');
-const bioButtons = document.querySelectorAll('.bio-btn');
+    const modal = document.querySelector('.modal-container');
+    const closeModal = document.querySelector('.close-modal');
+    const bioButtons = document.querySelectorAll('.bio-btn');
 
-function showLeaderBio(leader) {
+    function showLeaderBio(leader) {
     const bio = leaderBios[leader];
     const bioContent = document.querySelector('.leader-bio');
     
@@ -165,28 +164,29 @@ function showLeaderBio(leader) {
     
     modal.style.display = 'flex';
 }
-
-bioButtons.forEach(button => {
+    
+    bioButtons.forEach(button => {
     button.addEventListener('click', () => {
         const leader = button.getAttribute('data-leader');
         showLeaderBio(leader);
     });
 });
-
-closeModal.addEventListener('click', () => {
+    
+    if (closeModal) closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
 });
-
-window.addEventListener('click', (e) => {
+    
+    window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = 'none';
     }
 });
-
-// Board Meeting Calendar
-const calendarGrid = document.querySelector('.calendar-grid');
-const currentDate = new Date();
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+    
+    // --- Board Meeting Calendar ---
+    const calendarGrid = document.querySelector('.calendar-grid');
+    if (calendarGrid) {
+        const currentDate = new Date();
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Generate next 3 months of board meetings
@@ -203,11 +203,12 @@ for (let i = 0; i < 3; i++) {
         <p class="meeting-date">${meetingDate.toLocaleDateString()}</p>
     `;
     
-    calendarGrid.appendChild(meetingCard);
-}
+        calendarGrid.appendChild(meetingCard);
+    }
+    }
 
-// Additional ScrollReveal Animations for Leadership Section
-ScrollReveal().reveal('.leader-card', {
+    // --- Additional ScrollReveal Animations ---
+    ScrollReveal().reveal('.leader-card', {
     delay: 200,
     interval: 200,
     distance: '30px',
@@ -228,10 +229,9 @@ ScrollReveal().reveal('.meeting-card', {
     origin: 'bottom'
 });
 
-// Financial Dashboard Charts and Interactions
-document.addEventListener('DOMContentLoaded', () => {
+    // --- Financial Dashboard Charts and Interactions ---
     // Revenue Chart
-    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    const revenueCtx = document.getElementById('revenueChart')?.getContext('2d');
     const revenueChart = new Chart(revenueCtx, {
         type: 'line',
         data: {
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 10-Year History Chart
-    const historyCtx = document.getElementById('historyChart').getContext('2d');
+    const historyCtx = document.getElementById('historyChart')?.getContext('2d');
     const historyChart = new Chart(historyCtx, {
         type: 'bar',
         data: {
@@ -339,10 +339,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const purchaseAmount = document.getElementById('purchaseAmount');
     const schemeSelection = document.getElementById('schemeSelection');
     const benefitsResult = document.getElementById('benefitsResult');
-
-    calculateBtn.addEventListener('click', () => {
+    
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', () => {
         const amount = parseInt(purchaseAmount.value) || 0;
-        const selectedSchemes = Array.from(schemeSelection.selectedOptions).map(option => option.value);
+            const selectedSchemes = Array.from(schemeSelection.selectedOptions).map(option => option.value);
         
         let totalBenefits = 0;
         
@@ -365,13 +366,16 @@ document.addEventListener('DOMContentLoaded', () => {
         benefitsResult.offsetHeight; // Trigger reflow
         benefitsResult.style.animation = 'fadeInUp 0.5s ease';
     });
+    }
 
     // Login Form Handler
     const loginForm = document.querySelector('.login-form');
-    loginForm.addEventListener('submit', (e) => {
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         alert('Member portal login functionality will be implemented soon.');
     });
+    }
 
     // Service Button Handlers
     const serviceButtons = document.querySelectorAll('.service-btn');
@@ -380,13 +384,15 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('This service will be available soon in the member portal.');
         });
     });
-
+    
     // Download Report Handler
     const downloadBtn = document.querySelector('.download-report');
-    downloadBtn.addEventListener('click', () => {
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
         alert('Annual report download will be available soon.');
     });
-
+    }
+    
     // Scheme Detail Button Handlers
     const schemeDetailBtns = document.querySelectorAll('.scheme-details-btn');
     schemeDetailBtns.forEach(button => {
@@ -394,15 +400,14 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Detailed scheme information will be available soon.');
         });
     });
-});
 
-// Community Impact Section
-// Smooth counter animation with easing
-function easeOutQuart(x) {
+    // --- Community Impact Section ---
+    // Smooth counter animation with easing
+    function easeOutQuart(x) {
     return 1 - Math.pow(1 - x, 4);
 }
-
-function animateCounter(element, targetValue, duration = 2000) {
+    
+    function animateCounter(element, targetValue, duration = 2000) {
     const startValue = parseInt(element.textContent) || 0;
     const range = targetValue - startValue;
     const startTime = performance.now();
@@ -423,9 +428,7 @@ function animateCounter(element, targetValue, duration = 2000) {
     
     requestAnimationFrame(update);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize impact metrics with realistic data
+    
     const metrics = [
         { element: document.querySelector('[data-value="61"]'), value: 61 },
         { element: document.querySelector('[data-value="1597"]'), value: 1597 },
@@ -453,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Timeline Data
+    // --- Timeline Data ---
     const timelineData = {
         1960: [
             { year: 1964, title: 'Foundation', description: 'Establishment of Umarkhadi Consumers Cooperative Society with initial 50 members' },
@@ -486,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    // Timeline Navigation
+    // --- Timeline Navigation ---
     const decadeButtons = document.querySelectorAll('.decade-btn');
     const timelineContent = document.querySelector('.timeline-content');
 
@@ -513,14 +516,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Service Slider
+    // --- Service Slider ---
     const serviceTrack = document.querySelector('.service-track');
     const serviceSlides = document.querySelectorAll('.service-slide');
     const serviceNavBtns = document.querySelectorAll('.service-slider .slider-nav');
     let serviceCurrentSlide = 0;
 
     function updateServiceSlider() {
-        const slideWidth = serviceSlides[0].offsetWidth + 32; // Including gap
+        const slideWidth = serviceSlides[0]?.offsetWidth + 32; // Including gap
         serviceTrack.style.transform = `translateX(-${serviceCurrentSlide * slideWidth}px)`;
     }
 
@@ -535,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Gallery Filtering
+    // --- Gallery Filtering ---
     const galleryFilters = document.querySelectorAll('.filter-btn');
     const galleryGrid = document.querySelector('.gallery-grid');
 
@@ -567,13 +570,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize everything
-    showTimelineContent(1960);
-    updateGallery('all');
-});
+    // --- FAQ Section ---
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = question.querySelector('.icon');
 
-// Additional ScrollReveal Animations for Community Section
-ScrollReveal().reveal('.timeline-section', {
+        question.addEventListener('click', () => {
+            const isOpen = item.classList.toggle('open');
+            if (isOpen) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.textContent = '-';
+            } else {
+                answer.style.maxHeight = '0px';
+                icon.textContent = '+';
+            }
+        });
+    });
+
+    // --- Initializations ---
+    if (document.querySelector('.timeline-section')) showTimelineContent(1960);
+    if (document.querySelector('.gallery-grid')) updateGallery('all');
+
+    // --- Final ScrollReveal Animations ---
+    ScrollReveal().reveal('.timeline-section', {
     delay: 200,
     distance: '30px',
     origin: 'top'
@@ -606,13 +627,6 @@ ScrollReveal().reveal('.partner-card', {
     origin: 'bottom'
 });
 
-// Additional ScrollReveal Animations for Financial Dashboard
-ScrollReveal().reveal('.member-portal', {
-    delay: 200,
-    distance: '30px',
-    origin: 'top'
-});
-
 ScrollReveal().reveal('.metric-widget', {
     delay: 200,
     interval: 200,
@@ -626,9 +640,11 @@ ScrollReveal().reveal('.scheme-card', {
     distance: '30px',
     origin: 'bottom'
 });
-
+    
 ScrollReveal().reveal('.benefits-calculator', {
     delay: 200,
     distance: '30px',
     origin: 'bottom'
+});
+
 });
